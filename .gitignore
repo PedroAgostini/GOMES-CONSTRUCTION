@@ -1,0 +1,13 @@
+# working files (design process, reviews, unused assets)
+.impeccable/
+research/
+PRODUCT.md
+BRIEFING.md
+ONE PAGE*.md
+LOGO*.webp
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
