@@ -853,11 +853,10 @@ body::after {
 }
 /* the hero column centers and shrink-wraps on small screens: stretch it so the card can use the full width */
 .hero__side { justify-self: stretch; min-width: 0; }
-@media (max-width: 520px) {
-  .form--hero .form__nav { flex-direction: column-reverse; align-items: stretch; gap: 6px; }
-  .form--hero .form__nav [data-next], .form--hero .form__nav [data-submit] { flex: none; margin-left: 0; white-space: normal; }
-  .form--hero .form__back { align-self: center; min-height: 44px; }
-}
+/* the card is too narrow for Back and the submit label side by side: stack them, button first */
+.form--hero .form__nav { flex-direction: column-reverse; align-items: stretch; gap: 6px; }
+.form--hero .form__nav [data-next], .form--hero .form__nav [data-submit] { flex: none; margin-left: 0; white-space: normal; }
+.form--hero .form__back { align-self: center; min-height: 44px; }
 .hsteps { display: flex; align-items: center; margin-bottom: 4px; }
 .hsteps li { display: flex; align-items: center; color: rgba(246, 242, 238, .55); transition: color .4s var(--ease); }
 .hsteps li:not(:first-child) { flex: 1; }
