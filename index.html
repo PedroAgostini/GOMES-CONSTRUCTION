@@ -12,7 +12,7 @@
   <meta property="og:description" content="Get a roof that actually lasts through the brutal winters. 40-year material and 10-year labor guarantee.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gomessroofing.com/">
-  <meta property="og:image" content="https://gomessroofing.com/assets/img/dji_0957.jpg">
+  <meta property="og:image" content="https://gomessroofing.com/assets/img/og-cover.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://gomessroofing.com/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,7 @@
     "url": "https://gomessroofing.com/",
     "telephone": "+1-774-381-4481",
     "email": "info@gomessroofing.com",
-    "image": "https://gomessroofing.com/assets/img/dji_0957.jpg",
+    "image": "https://gomessroofing.com/assets/img/og-cover.jpg",
     "address": {"@type": "PostalAddress", "streetAddress": "58 Denton St", "addressLocality": "Brockton", "addressRegion": "MA", "postalCode": "02301", "addressCountry": "US"},
     "geo": {"@type": "GeoCoordinates", "latitude": 42.0673345, "longitude": -71.0175669},
     "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "07:00", "closes": "18:00"}],
@@ -50,6 +50,8 @@
     <symbol id="i-roof" viewBox="0 0 24 24"><path d="M2.5 12.5 12 4l9.5 8.5M5.5 10v9.5h13V10" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
     <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.5 4.2a5 5 0 0 0-6 6.4L3.8 15.3a2 2 0 0 0 2.9 2.9l4.7-4.7a5 5 0 0 0 6.4-6l-3 3-2.7-.6-.6-2.7Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
     <symbol id="i-siding" viewBox="0 0 24 24"><path d="M4 3.5h16v17H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M4 8.6 20 7.4M4 13.2 20 12M4 17.8 20 16.6" fill="none" stroke="currentColor" stroke-width="1.9"/></symbol>
+    <symbol id="i-gutter" viewBox="0 0 24 24"><path d="M3.5 5.5h17V8a3 3 0 0 1-3 3h-11a3 3 0 0 1-3-3Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M15.5 11v4l-4.5 2.5v3.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+    <symbol id="i-skylight" viewBox="0 0 24 24"><path d="m4.5 7.5 15-3v12l-15 3Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M12 6v12M4.5 13.5l15-3" fill="none" stroke="currentColor" stroke-width="1.9"/></symbol>
     <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="m15 15 5 5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4.5v15M4.5 12h15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square"/></symbol>
     <symbol id="i-seal" viewBox="0 0 24 24"><circle cx="12" cy="9.5" r="6" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="m8.6 14.5-1.6 6.5 5-2.4 5 2.4-1.6-6.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="m9.6 9.6 1.7 1.7 3.3-3.4" fill="none" stroke="currentColor" stroke-width="1.9"/></symbol>
@@ -107,10 +109,70 @@
       <div class="wrap hero__grid">
         <h1 class="hero__title"><span class="hero__line">Get A Roof That</span> <span class="hero__line">Actually Lasts Through</span> <span class="hero__line">The <em class="hero__em">Brutal Winters</em></span></h1>
         <div class="hero__side">
-          <p class="hero__sub">Stop worrying about leaks. Every installation includes a strict <strong>40-year material</strong> and <strong>10-year labor</strong> guarantee.</p>
-          <div class="hero__actions">
-            <a class="btn btn--lg" data-magnetic href="#estimate">Start Your Roof Upgrade<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
+          <form class="form form--hero" data-form action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+            <input type="hidden" name="subject" value="New estimate request from gomessroofing.com">
+            <input type="hidden" name="from_name" value="Gomes's Construction Website">
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <ol class="hsteps" aria-label="Form progress">
+              <li class="is-current" data-step-dot><span class="hsteps__label">Step <b>1</b></span></li>
+              <li data-step-dot><span class="hsteps__label">Step <b>2</b></span></li>
+              <li data-step-dot><span class="hsteps__label">Step <b>3</b></span></li>
+            </ol>
+
+            <div class="form__body">
+              <div class="fstep is-active" data-step>
+                <div class="field">
+                  <label class="sr" for="hf-address">Property address or ZIP code</label>
+                  <input id="hf-address" name="address" type="text" autocomplete="street-address" required placeholder="Enter Your Address or ZIP Code">
+                  <p class="field__err" data-err>Add the address or ZIP of the property.</p>
+                </div>
+              </div>
+
+              <div class="fstep" data-step hidden>
+                <fieldset class="field">
+                  <legend class="step__q">What do you need?</legend>
+                  <div class="chips chips--grid">
+                    <label class="chip"><input type="radio" name="service" value="Roof Replacement" required><span><svg class="ico" aria-hidden="true"><use href="#i-roof"/></svg>Roof replacement</span></label>
+                    <label class="chip"><input type="radio" name="service" value="Roof Repair"><span><svg class="ico" aria-hidden="true"><use href="#i-wrench"/></svg>Roof repair</span></label>
+                    <label class="chip"><input type="radio" name="service" value="Siding"><span><svg class="ico" aria-hidden="true"><use href="#i-siding"/></svg>Siding</span></label>
+                    <label class="chip"><input type="radio" name="service" value="Insurance Claim / Storm Damage"><span><svg class="ico" aria-hidden="true"><use href="#i-claim"/></svg>Insurance claim</span></label>
+                    <label class="chip"><input type="radio" name="service" value="Gutters"><span><svg class="ico" aria-hidden="true"><use href="#i-gutter"/></svg>Gutters</span></label>
+                    <label class="chip"><input type="radio" name="service" value="Skylights"><span><svg class="ico" aria-hidden="true"><use href="#i-skylight"/></svg>Skylights</span></label>
+                    <label class="chip"><input type="radio" name="service" value="Roof Inspection"><span><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>Inspection</span></label>
+                  </div>
+                  <p class="field__err" data-err>Choose the service you need.</p>
+                </fieldset>
+              </div>
+
+              <div class="fstep" data-step hidden>
+                <div class="field">
+                  <label class="sr" for="hf-name">Full name</label>
+                  <input id="hf-name" name="name" type="text" autocomplete="name" required placeholder="Full Name">
+                  <p class="field__err" data-err>Please enter your name.</p>
+                </div>
+                <div class="field">
+                  <label class="sr" for="hf-phone">Phone</label>
+                  <input id="hf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="Phone Number">
+                  <p class="field__err" data-err>Enter a phone number so we can call you back.</p>
+                </div>
+                <div class="field">
+                  <label class="sr" for="hf-email">Email</label>
+                  <input id="hf-email" name="email" type="email" autocomplete="email" required placeholder="Email">
+                  <p class="field__err" data-err>Enter a valid email, like name@email.com.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="form__nav">
+              <button class="form__back" type="button" data-back hidden><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>Back</button>
+              <button class="btn btn--lg" type="button" data-next>Next<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+              <button class="btn btn--lg" type="submit" data-submit hidden>
+                <span data-submit-label>Request My Free Estimate</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </button>
+            </div>
+            <p class="form__status" role="status" aria-live="polite" data-status></p>          </form>
         </div>
       </div>
       <button class="hero__toggle" type="button" data-hero-toggle aria-label="Pause background video"><svg aria-hidden="true"><use href="#i-pause"/></svg></button>
@@ -121,14 +183,14 @@
     <section class="about section has-grid" id="about">
       <div class="wrap about__grid">
         <figure class="about__photo plate" data-reveal>
-          <img src="assets/img/dji_0957.jpg" alt="Gomes's Construction trucks parked in front of a finished home in Massachusetts" width="1600" height="905" loading="lazy">
-          <figcaption>Finished project, Massachusetts. Drone photo.</figcaption>
-          <img class="about__inset" src="assets/img/dji_0755.jpg" alt="Close drone view of new shingles on a finished roof" width="1600" height="1200" loading="lazy">
+          <img src="assets/img/about-truck-finished-home.webp" alt="Gomes&#39;s Construction truck parked in front of a finished home at sunset" width="1400" height="1050" loading="lazy">
+          <figcaption>Finished project, Massachusetts.</figcaption>
+          <img class="about__inset" src="assets/img/about-shingle-detail.webp" alt="Close aerial view of new gray architectural shingles on a finished roof" width="900" height="675" loading="lazy">
         </figure>
         <div class="about__copy">
           <h2 class="h2" data-reveal>12 Years Of Honest Construction</h2>
           <div class="prose" data-reveal>
-            <p class="lede">When Jose Gomes started this company, he saw too many homeowners getting overcharged for poor work.</p>
+            <p class="lede">When this company was founded, we saw too many homeowners getting overcharged for poor work.</p>
             <p>For over 12 years, we have built a reputation in Brockton and across Massachusetts by doing things differently. We refuse to cut corners, never mix cheap materials, and use top-quality products backed by real warranties.</p>
             <p>Whether you need a new roof, upgraded siding, or help with an insurance claim, we treat your home like our own.</p>
           </div>
@@ -150,7 +212,7 @@
         </header>
         <div class="svc-grid" data-stagger>
           <article class="svc-card" data-reveal>
-            <figure class="svc-card__media"><img src="assets/img/gal-9-2-2.jpg" alt="Aerial view of a new architectural shingle roof on a Massachusetts home" width="1200" height="675" loading="lazy"></figure>
+            <figure class="svc-card__media"><img src="assets/img/service-roof-replacement.webp" alt="Aerial view of a new gray shingle roof on a white colonial home" width="1200" height="900" loading="lazy"></figure>
             <div class="svc-card__body">
               <svg class="svc-card__ico" aria-hidden="true"><use href="#i-roof"/></svg>
               <h3>Roof Installation &amp; Replacement</h3>
@@ -158,7 +220,7 @@
             </div>
           </article>
           <article class="svc-card" data-reveal>
-            <figure class="svc-card__media"><img src="assets/img/gal-23.jpg" alt="Close-up of newly installed shingle courses" width="768" height="1024" loading="lazy"></figure>
+            <figure class="svc-card__media"><img src="assets/img/service-roof-repair.webp" alt="Close-up of new flashing where a brick chimney meets the shingles" width="1200" height="900" loading="lazy"></figure>
             <div class="svc-card__body">
               <svg class="svc-card__ico" aria-hidden="true"><use href="#i-wrench"/></svg>
               <h3>Roof Repair &amp; Maintenance</h3>
@@ -166,7 +228,7 @@
             </div>
           </article>
           <article class="svc-card" data-reveal>
-            <figure class="svc-card__media"><img src="assets/img/gal-5.jpg" alt="Home with new siding and a white deck" width="800" height="600" loading="lazy"></figure>
+            <figure class="svc-card__media"><img src="assets/img/service-siding.webp" alt="Home with new white siding, a green shingle gable and a black roof" width="1200" height="900" loading="lazy"></figure>
             <div class="svc-card__body">
               <svg class="svc-card__ico" aria-hidden="true"><use href="#i-siding"/></svg>
               <h3>Siding Installation</h3>
@@ -174,11 +236,27 @@
             </div>
           </article>
           <article class="svc-card" data-reveal>
-            <figure class="svc-card__media"><img src="assets/img/dji_0024.jpg" alt="Damaged roof under tear-off with a protective tarp" width="1600" height="1200" loading="lazy"></figure>
+            <figure class="svc-card__media"><img src="assets/img/service-insurance-restoration.webp" alt="Finished brown shingle roof on a yellow home" width="1200" height="900" loading="lazy"></figure>
             <div class="svc-card__body">
               <svg class="svc-card__ico" aria-hidden="true"><use href="#i-claim"/></svg>
               <h3>Insurance Claims Restoration</h3>
               <p>Storm damage is a headache. We deal directly with your insurance company to get your home fixed without the stress.</p>
+            </div>
+          </article>
+          <article class="svc-card" data-reveal>
+            <figure class="svc-card__media"><img src="assets/img/service-gutters.webp" alt="Roof edge and white gutters on a home with a new gray shingle roof" width="1200" height="900" loading="lazy"></figure>
+            <div class="svc-card__body">
+              <svg class="svc-card__ico" aria-hidden="true"><use href="#i-gutter"/></svg>
+              <h3>Gutters</h3>
+              <p>Keep rainwater safely away from your home. We install and repair durable gutters to protect your foundation from costly water damage.</p>
+            </div>
+          </article>
+          <article class="svc-card" data-reveal>
+            <figure class="svc-card__media"><img src="assets/img/service-skylights.webp" alt="Brown shingle roof with skylights on a white home" width="1200" height="900" loading="lazy"></figure>
+            <div class="svc-card__body">
+              <svg class="svc-card__ico" aria-hidden="true"><use href="#i-skylight"/></svg>
+              <h3>Skylights</h3>
+              <p>Brighten your home with beautiful natural light. We provide expert skylight installations and fast, leak-free repairs.</p>
             </div>
           </article>
         </div>
@@ -198,15 +276,15 @@
       <div class="carousel" data-carousel tabindex="0" role="region" aria-roledescription="carousel" aria-label="Photos of recent roofing and siding projects. Drag or use the arrow keys to browse.">
         <div class="carousel__track" data-carousel-track>
           <ul class="carousel__set">
-            <li><img src="assets/img/gal-7-2-2.jpg" alt="Aerial view of a completed gray shingle roof surrounded by trees" width="1200" height="675" loading="lazy" draggable="false"></li>
-            <li><img src="assets/img/gal-18.jpg" alt="Completed charcoal roof on a white colonial home" width="828" height="616" loading="lazy" draggable="false"></li>
-            <li><img src="assets/img/dji_0756.jpg" alt="Top-down drone view of a finished roof ridge" width="795" height="1200" loading="lazy" draggable="false"></li>
-            <li><img src="assets/img/gal-project-2.jpg" alt="Flat and pitched roof sections on a multi-level home" width="1200" height="675" loading="lazy" draggable="false"></li>
-            <li><img src="assets/img/gal-11.jpg" alt="White cape-style home with a new dark roof and chimney" width="815" height="620" loading="lazy" draggable="false"></li>
-            <li><img src="assets/img/dji_0755.jpg" alt="Close drone view of new shingles on a finished roof" width="1600" height="1200" loading="lazy" draggable="false"></li>
-            <li><img src="assets/img/gal-16.jpg" alt="New roof and siding on a two-story home" width="1200" height="900" loading="lazy" draggable="false"></li>
-            <li><img src="assets/img/gal-32.jpg" alt="New shingle roof seen from above" width="960" height="720" loading="lazy" draggable="false"></li>
-            <li><img src="assets/img/site-25.jpg" alt="Roof replacement in progress on a blue home" width="960" height="720" loading="lazy" draggable="false"></li>
+            <li><img src="assets/img/work-gray-roof-colonial.webp" alt="New gray shingle roof on a white colonial home, with the company trucks on the street" width="1400" height="1050" loading="lazy" draggable="false"></li>
+            <li><img src="assets/img/work-gray-roof-bungalow.webp" alt="Completed gray shingle roofs on two neighboring homes" width="1400" height="1050" loading="lazy" draggable="false"></li>
+            <li><img src="assets/img/work-brown-roof-white-home.webp" alt="Finished brown shingle roof on a white home" width="1400" height="1050" loading="lazy" draggable="false"></li>
+            <li><img src="assets/img/work-gray-roof-white-colonial.webp" alt="New gray shingle roof on a white colonial home with black shutters" width="1400" height="1050" loading="lazy" draggable="false"></li>
+            <li><img src="assets/img/work-gray-roof-hip.webp" alt="Completed gray shingle roof with a dormer, seen from above" width="1400" height="1050" loading="lazy" draggable="false"></li>
+            <li><img src="assets/img/work-brown-roof-ranch.webp" alt="Finished brown shingle roof on a white ranch home" width="1400" height="983" loading="lazy" draggable="false"></li>
+            <li><img src="assets/img/work-black-roof-white-siding.webp" alt="Finished home with a black roof and new white siding" width="1400" height="1050" loading="lazy" draggable="false"></li>
+            <li><img src="assets/img/work-charcoal-roof-townhome.webp" alt="New charcoal shingle roof with a dormer in warm evening light" width="1400" height="1050" loading="lazy" draggable="false"></li>
+            <li><img src="assets/img/work-gray-roof-neighborhood.webp" alt="Completed gray shingle roof in a Massachusetts neighborhood" width="1400" height="1050" loading="lazy" draggable="false"></li>
           </ul>
         </div>
       </div>
@@ -477,27 +555,27 @@
             <ol class="layers" data-layers>
               <li class="layer is-active" data-layer="0">
                 <h3><b>01</b><span class="layer__title">Solid Deck</span><i class="layer__swatch layer__swatch--deck" aria-hidden="true"></i></h3>
-                <div class="layer__body"><p>We check the decking and replace soft or rotted wood before anything goes on top.</p></div>
+                <div class="layer__body"><p><strong>Plywood CDX.</strong> We check the decking and replace soft or rotted wood before anything goes on top.</p></div>
               </li>
               <li class="layer" data-layer="1">
                 <h3><b>02</b><span class="layer__title">Ice &amp; Water Shield</span><i class="layer__swatch layer__swatch--shield" aria-hidden="true"></i></h3>
-                <div class="layer__body"><p>A self-sealing membrane that guards the roof edges, where New England ice dams start.</p></div>
+                <div class="layer__body"><p><strong>CertainTeed WinterGuard®.</strong> A self-sealing membrane that guards the roof edges, where New England ice dams start.</p></div>
               </li>
               <li class="layer" data-layer="2">
                 <h3><b>03</b><span class="layer__title">Synthetic Underlayment</span><i class="layer__swatch layer__swatch--under" aria-hidden="true"></i></h3>
-                <div class="layer__body"><p>A second line of defense across the whole deck, from the same manufacturer as your shingles.</p></div>
+                <div class="layer__body"><p><strong>CertainTeed RoofRunner™.</strong> A second line of defense across the whole deck, from the same manufacturer as your shingles.</p></div>
               </li>
               <li class="layer" data-layer="3">
                 <h3><b>04</b><span class="layer__title">Starter Strip</span><i class="layer__swatch layer__swatch--starter" aria-hidden="true"></i></h3>
-                <div class="layer__body"><p>Starter shingles at the eaves seal the first course against wind uplift.</p></div>
+                <div class="layer__body"><p><strong>CertainTeed SwiftStart®.</strong> Starter shingles at the eaves seal the first course against wind uplift.</p></div>
               </li>
               <li class="layer" data-layer="4">
                 <h3><b>05</b><span class="layer__title">Architectural Shingles</span><i class="layer__swatch layer__swatch--shingle" aria-hidden="true"></i></h3>
-                <div class="layer__body"><p>CertainTeed dimensional shingles, installed to manufacturer specifications so the roof is covered as one system.</p></div>
+                <div class="layer__body"><p><strong>CertainTeed Landmark® PRO.</strong> Dimensional shingles, installed to manufacturer specifications so the roof is covered as one system.</p></div>
               </li>
               <li class="layer" data-layer="5">
                 <h3><b>06</b><span class="layer__title">Ridge Cap</span><i class="layer__swatch layer__swatch--ridge" aria-hidden="true"></i></h3>
-                <div class="layer__body"><p>Matching ridge cap shingles finish and seal the peak of the roof.</p></div>
+                <div class="layer__body"><p><strong>CertainTeed Shadow Ridge®.</strong> Matching ridge cap shingles finish and seal the peak of the roof.</p></div>
               </li>
             </ol>
           </div>
@@ -505,7 +583,7 @@
           <div class="system__visual">
             <div class="system__detail" aria-hidden="true">
               <p class="system__counter" aria-hidden="true"><span class="system__count" data-layer-count>01</span><span class="system__meta"><span class="system__total">of 06 layers</span><span class="system__name" data-layer-name>Solid deck</span></span></p>
-              <p class="system__desc" data-layer-desc>We check the decking and replace soft or rotted wood before anything goes on top.</p>
+              <p class="system__desc" data-layer-desc>Plywood CDX. We check the decking and replace soft or rotted wood before anything goes on top.</p>
             </div>
             <div class="seal" data-seal aria-hidden="true">
               <svg viewBox="0 0 160 160">
@@ -623,6 +701,8 @@
                     <label class="chip"><input type="radio" name="service" value="Roof Repair"><span><svg class="ico" aria-hidden="true"><use href="#i-wrench"/></svg>Roof repair</span></label>
                     <label class="chip"><input type="radio" name="service" value="Siding"><span><svg class="ico" aria-hidden="true"><use href="#i-siding"/></svg>Siding</span></label>
                     <label class="chip"><input type="radio" name="service" value="Insurance Claim / Storm Damage"><span><svg class="ico" aria-hidden="true"><use href="#i-claim"/></svg>Insurance claim</span></label>
+                    <label class="chip"><input type="radio" name="service" value="Gutters"><span><svg class="ico" aria-hidden="true"><use href="#i-gutter"/></svg>Gutters</span></label>
+                    <label class="chip"><input type="radio" name="service" value="Skylights"><span><svg class="ico" aria-hidden="true"><use href="#i-skylight"/></svg>Skylights</span></label>
                     <label class="chip"><input type="radio" name="service" value="Roof Inspection"><span><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>Inspection</span></label>
                   </div>
                   <p class="field__err" data-err>Choose the service you need.</p>
@@ -700,6 +780,11 @@
           <li><span><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>58 Denton St, Brockton, MA 02301</span></li>
           <li><span><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>Mon–Sat, 7 AM–6 PM</span></li>
         </ul>
+        <p class="footer__h">Licenses</p>
+        <ul class="footer__list">
+          <li><span><svg class="ico" aria-hidden="true"><use href="#i-seal"/></svg>Home Improvement Contractor: 201976</span></li>
+          <li><span><svg class="ico" aria-hidden="true"><use href="#i-seal"/></svg>Construction Supervisor: CS-115736</span></li>
+        </ul>
       </div>
       <div>
         <p class="footer__h">Services</p>
@@ -708,6 +793,8 @@
           <li><a href="#services">Roof Repair &amp; Maintenance</a></li>
           <li><a href="#services">Siding Installation</a></li>
           <li><a href="#services">Insurance Claims Restoration</a></li>
+          <li><a href="#services">Gutters</a></li>
+          <li><a href="#services">Skylights</a></li>
         </ul>
       </div>
     </div>

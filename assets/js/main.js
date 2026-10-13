@@ -34,10 +34,10 @@
   const LAYERS = [
     { key: "deck",    y0: 0,   y1: 300, t: 14,  top: "#dbb486", front: "#c3966a", right: "#a77c51" },
     { key: "shield",  y0: 0,   y1: 272, t: 3,   top: "#2b2e32", front: "#1f2124", right: "#17191b" },
-    { key: "under",   y0: 0,   y1: 244, t: 2.5, top: "#b3bac0", front: "#959ca2", right: "#80878d" },
-    { key: "starter", y0: 150, y1: 220, t: 3,   top: "#55595e", front: "#3d4044", right: "#33363a" },
-    { key: "shingle", y0: 0,   y1: 194, t: 6,   top: "#3b3e42", front: "#2b2d30", right: "#222427" },
-    { key: "ridge",   y0: 0,   y1: 28,  t: 9,   top: "#45484d", front: "#303236", right: "#26282b" }
+    { key: "under",   y0: 0,   y1: 244, t: 2.5, top: "#eef1f4", front: "#cdd3d9", right: "#b7bec5" },
+    { key: "starter", y0: 150, y1: 220, t: 3,   top: "#2a2c2f", front: "#1e2022", right: "#17181a" },
+    { key: "shingle", y0: 0,   y1: 194, t: 6,   top: "#6b5a4c", front: "#4a3d34", right: "#3c312a" },
+    { key: "ridge",   y0: 0,   y1: 28,  t: 9,   top: "#665648", front: "#4a3d34", right: "#3c312a" }
   ];
   // resting heights (shingles sit on the underlayment, over the starter)
   const Z0 = [0, 14, 17, 19.5, 19.5, 25.5];
@@ -130,6 +130,18 @@
     const r = rng(17 + i * 31);
     const line = (x1, y1, x2, y2, stroke, w = 1, op = 1) =>
       el("line", { x1, y1, x2, y2, stroke, "stroke-width": w, opacity: op }, g);
+    // product name printed on the sheet (it sits in the layer plane, so it follows the isometric angle)
+    const print = (x, y, str, fill, size, op = 1) => {
+      el("text", { x, y, fill, opacity: op, "font-family": "Jost, sans-serif", "font-weight": 800, "font-size": size, "letter-spacing": ".02em" }, g).textContent = str;
+    };
+    const wordmarks = (product, brandFill, productFill, y0, stepY) => {
+      for (let y = y0, row = 0; y < L.y1; y += stepY, row++) {
+        for (let x = row % 2 ? -72 : 14; x < W; x += 172) {
+          print(x, y, "CertainTeed", brandFill, 15);
+          print(x + 2, y + 12, product, productFill, 9.5);
+        }
+      }
+    };
 
     if (key === "deck") {
       // 4x8 plywood sheets, staggered, with grain and nail lines
@@ -144,24 +156,26 @@
         el("path", { d: `M${x.toFixed(1)} ${y.toFixed(1)} q ${len / 2} ${((r() - .5) * 4).toFixed(1)} ${len} 0`, fill: "none", stroke: "#b08458", "stroke-width": .8, opacity: .45 }, g);
       }
       for (let x = 6; x < W; x += 60) for (let y = 8; y < D; y += 16) el("circle", { cx: x, cy: y, r: .9, fill: "#7c5a39", opacity: .55 }, g);
+      print(196, 293, "PLYWOOD CDX", "#7c5a39", 13, .75);
+      print(20, 293, "PLYWOOD CDX", "#7c5a39", 13, .75);
     }
     if (key === "shield") {
       for (let y = 0; y < L.y1; y += 92) line(0, y, W, y, "#4a4e53", 1.2);
-      for (let k = 0; k < 260; k++) el("circle", { cx: (r() * W).toFixed(1), cy: (r() * L.y1).toFixed(1), r: .7, fill: "#5d6166", opacity: .55 }, g);
+      for (let k = 0; k < 120; k++) el("circle", { cx: (r() * W).toFixed(1), cy: (r() * L.y1).toFixed(1), r: .7, fill: "#5d6166", opacity: .5 }, g);
+      wordmarks("WinterGuard®", "#eef1f3", "#b4bac0", 30, 44);
     }
     if (key === "under") {
-      for (let y = 6; y < L.y1; y += 38) {
-        line(0, y, W, y, "#8a9197", 1.1);
-        line(0, y + 5, W, y + 5, "#c8ced3", .8);
-        for (let x = 14; x < W; x += 52) el("rect", { x, y: y + 13, width: 18, height: 3, fill: "#c81e16", opacity: .55 }, g);
-      }
+      for (let y = 6; y < L.y1; y += 44) line(0, y, W, y, "#c3ccd8", 1);
+      for (let x = 30; x < W; x += 86) for (let y = 12; y < L.y1; y += 44) el("circle", { cx: x, cy: y, r: 2.2, fill: "none", stroke: "#3b6fc0", "stroke-width": .8, opacity: .7 }, g);
+      wordmarks("RoofRunner™", "#1d4f9f", "#3b6fc0", 32, 44);
     }
     if (key === "starter") {
-      line(0, L.y1 - 10, W, L.y1 - 10, "#d8d2c8", 2, .55);
-      for (let x = 0; x < W; x += 40) line(x, L.y0, x, L.y1, "#2e3134", 1, .6);
+      el("line", { x1: 0, y1: L.y1 - 10, x2: W, y2: L.y1 - 10, stroke: "#e6e2da", "stroke-width": 1.6, "stroke-dasharray": "7 5", opacity: .8 }, g);
+      for (let x = 0; x < W; x += 40) line(x, L.y0, x, L.y1, "#3a3d41", 1, .6);
     }
     if (key === "shingle") {
-      const tones = ["#3b3e42", "#45494d", "#33363a", "#4f5357", "#2c2f32", "#565a5e", "#3f4246"];
+      // Landmark PRO in a Weathered Wood blend
+      const tones = ["#6b5a4c", "#7d6a59", "#5a4b40", "#8a7766", "#4d4038", "#6f6156", "#3f3832", "#94826f"];
       const EXP = 14;
       for (let y = 0, row = 0; y < L.y1; y += EXP, row++) {
         let x = -((row * 13) % 30);
@@ -171,13 +185,13 @@
           if (r() > .62) el("rect", { x: x + 2, y: y + EXP - 5, width: w - 4, height: 5, fill: "#000", opacity: .18 }, g);
           x += w;
         }
-        line(0, y + EXP, W, y + EXP, "#1c1e21", 1.6, .9);
+        line(0, y + EXP, W, y + EXP, "#2a221d", 1.6, .9);
       }
     }
     if (key === "ridge") {
       for (let x = 0; x < W; x += 24) {
-        el("rect", { x: x + .5, y: 0, width: 23, height: L.y1, fill: x % 48 ? "#4a4d52" : "#404347" }, g);
-        line(x + 23.5, 0, x + 23.5, L.y1, "#2a2c2f", 1.2);
+        el("rect", { x: x + .5, y: 0, width: 23, height: L.y1, fill: x % 48 ? "#74624f" : "#5f5044" }, g);
+        line(x + 23.5, 0, x + 23.5, L.y1, "#2e2620", 1.2);
       }
     }
   }
@@ -482,9 +496,8 @@
     if (list) list.textContent = ["Brockton", ...TOWNS.map((t) => t[0])].sort().join(" · ");
   }
 
-  /* estimate form: three steps, validated per step, sent to Web3Forms */
-  const form = $("[data-form]");
-  if (form) {
+  /* estimate forms (hero + section): three steps, validated per step, sent to Web3Forms */
+  $$("[data-form]").forEach((form) => {
     const steps = $$("[data-step]", form), dots = $$("[data-step-dot]", form);
     const next = $("[data-next]", form), back = $("[data-back]", form), submit = $("[data-submit]", form);
     const label = $("[data-submit-label]", form), status = $("[data-status]", form);
@@ -518,7 +531,8 @@
     back.addEventListener("click", () => show(cur - 1));
     $$('input[name="service"]', form).forEach((r) => r.addEventListener("change", () => {
       r.closest(".field").classList.remove("is-invalid");
-      if (cur === 0) setTimeout(() => show(1), 240);
+      const at = steps.indexOf(r.closest("[data-step]"));
+      if (cur === at) setTimeout(() => show(at + 1), 240);
     }));
     form.addEventListener("keydown", (e) => {
       if (e.key === "Enter" && e.target.tagName === "INPUT" && cur < steps.length - 1) { e.preventDefault(); next.click(); }
@@ -551,7 +565,7 @@
       }
     });
     show(0, false);
-  }
+  });
 
   /* live open / closed status, computed in Massachusetts time (Mon–Sat 7 AM–6 PM) */
   const statusEl = $("[data-status-hours]");
