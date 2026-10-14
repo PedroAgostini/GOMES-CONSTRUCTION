@@ -546,14 +546,24 @@
       for (let k = 0; k < steps.length; k++) {
         if (!required(steps[k]).every(valid)) { show(k, false); check(steps[k]); return; }
       }
-      if (form.botcheck.checked) return;
-      submit.disabled = true; submit.classList.add("is-loading"); label.textContent = "Sending your request…";
+      const spam = window.GomesAntispam ? GomesAntispam.verdict(form) : (form.botcheck.checked ? "bot" : "");
       status.className = "form__status"; status.textContent = "";
+      if (spam === "bot") { form.classList.add("is-sent"); status.classList.add("is-ok"); status.textContent = "Thank you. José will call you, usually the same day."; return; }
+      if (spam) {
+        status.classList.add("is-err");
+        status.innerHTML = spam === "links"
+          ? "Please remove the web links from your name or message and send again."
+          : 'We already have your request. For anything new, call <a href="tel:+17743814481">(774) 381-4481</a>.';
+        return;
+      }
+      submit.disabled = true; submit.classList.add("is-loading"); label.textContent = "Sending your request…";
       try {
         const data = Object.fromEntries(new FormData(form));
+        if (window.GomesAntispam) GomesAntispam.clean(data);
         const res = await fetch(form.action, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) });
         const out = await res.json().catch(() => ({}));
         if (!res.ok || out.success === false) throw new Error(out.message || "Request failed");
+        if (window.GomesAntispam) GomesAntispam.sent();
         form.classList.add("is-sent");
         status.classList.add("is-ok");
         status.textContent = `Thank you, ${String(data.name).split(" ")[0]}. José will call you at ${data.phone}, usually the same day.`;

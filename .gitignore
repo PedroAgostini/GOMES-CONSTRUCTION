@@ -12,3 +12,7 @@ LOGO*.webp
 Thumbs.db
 desktop.ini
 .vscode/
+
+# raw photo dumps (808 MB, not used by any page)
+assets/imagens-novas/
+assets/imagens-novas.zip

@@ -67,16 +67,24 @@ A identidade parte da logo do cliente: o gradiente **bordô `#7A1A12` → vermel
 .
 ├── index.html            # página única
 ├── 404.html              # página de erro com a marca
+├── privacy-policy/       # Privacy Policy (mesmo header e footer da home)
+├── terms-of-use/         # Terms of Use
+├── lp/roofing/           # landing page de anúncios + thank-you (noindex)
 ├── assets/
 │   ├── css/styles.css    # todos os estilos (tokens no :root)
 │   ├── js/main.js        # interações: diagrama, carrosséis, form, mapa…
+│   ├── js/antispam.js    # honeypots, tempo mínimo, filtro de links e limite de envios dos forms
 │   ├── img/              # fotos reais de obras e drone
 │   ├── video/            # vídeo de drone do hero + poster
 │   ├── badges/           # selos CertainTeed
 │   └── logo/             # logos e favicon
 ├── docs/                 # imagens deste README
-├── .htaccess             # HTTPS, cache, gzip, headers e noindex no staging
+├── .htaccess             # HTTPS, www, URLs limpas, bloqueio de bots/sondagens, headers, cache, gzip
 ├── robots.txt · sitemap.xml
+├── llms.txt · humans.txt # resumo para IAs · créditos
+├── site.webmanifest      # nome, cores e ícones do app
+├── favicon.ico · apple-touch-icon.png
+├── .well-known/security.txt
 └── CNAME · .nojekyll     # suporte a GitHub Pages
 ```
 

@@ -95,11 +95,17 @@
     if (current < steps.length - 1) { if (validStep(current)) show(current + 1, 1); return; }
     if (!validStep(current)) return;
 
+    // bots are dropped quietly, never sent to thank-you/ (it fires the Ads conversion)
+    const spam = window.GomesAntispam ? GomesAntispam.verdict(form) : (form.botcheck.checked ? "bot" : "");
     fail.hidden = true;
+    if (spam === "bot") return;
+    if (spam) { fail.hidden = false; return; }
+
     submit.disabled = true;
     submit.classList.add("is-sending");
 
     const data = Object.fromEntries(new FormData(form));
+    if (window.GomesAntispam) GomesAntispam.clean(data);
     data.name = `${data.first_name} ${data.last_name}`.trim();
     data.page = location.href;
 
@@ -111,6 +117,7 @@
       });
       const json = await res.json().catch(() => ({}));
       if (!res.ok || json.success === false) throw new Error(json.message || res.status);
+      if (window.GomesAntispam) GomesAntispam.sent();
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: "lead_submit", form_id: "form01", service: data.service });
       location.href = thankYouUrl();

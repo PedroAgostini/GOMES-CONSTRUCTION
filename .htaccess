@@ -1,15 +1,50 @@
-# Gomes's Construction Inc. — static one-page site (Apache / cPanel)
+# Gomes's Construction Inc. — static site (Apache / cPanel)
 
 Options -Indexes
 DirectoryIndex index.html
+ErrorDocument 403 /404.html
 ErrorDocument 404 /404.html
+AddDefaultCharset utf-8
+ServerSignature Off
 
-# ---- HTTPS ----
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # ---- HTTPS ----
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # ---- www -> bare domain (production only) ----
+  RewriteCond %{HTTP_HOST} ^www\.gomessroofing\.com$ [NC]
+  RewriteRule ^ https://gomessroofing.com%{REQUEST_URI} [L,R=301]
+
+  # ---- Clean URLs ----
+  # /index.html and /folder/index.html -> folder URL (THE_REQUEST avoids a loop with DirectoryIndex)
+  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+  RewriteRule ^(.*/)?index\.html$ /$1 [L,R=301,NC]
+  # Short and old-style addresses for the legal pages
+  RewriteRule ^(privacy|privacy-policy\.html)/?$ /privacy-policy/ [L,R=301,NC]
+  RewriteRule ^(terms|terms-of-use\.html|terms-of-service)/?$ /terms-of-use/ [L,R=301,NC]
+
+  # ---- Antispam / abuse ----
+  # Probes for WordPress, PHP panels and leaked config files: this site has none of them
+  RewriteRule (^|/)(wp-admin|wp-login\.php|wp-content|wp-includes|xmlrpc\.php|phpmyadmin|administrator|cgi-bin)(/|$) - [F,NC,L]
+  RewriteRule \.(php[0-9]?|asp|aspx|jsp|cgi|env|ini|log|sql|sh|bak|old|swp|zip|md)$ - [F,NC,L]
+  # Hidden files and folders (.git, .env, .impeccable...), except .well-known
+  RewriteRule (^|/)\.(?!well-known/) - [F,L]
+  # Working folders that are not part of the site
+  RewriteRule ^(research|docs)(/|$) - [F,NC,L]
+  # Vulnerability scanners, site rippers, aggressive crawlers and empty user agents
+  RewriteCond %{HTTP_USER_AGENT} ^-?$ [OR]
+  RewriteCond %{HTTP_USER_AGENT} (sqlmap|nikto|masscan|zgrab|nmap|acunetix|wpscan|dirbuster|gobuster|nuclei|httrack|mj12bot|dotbot|blexbot) [NC]
+  RewriteRule ^ - [F,L]
+  # Only GET, HEAD and OPTIONS: the forms post straight to Web3Forms, never to this server
+  RewriteCond %{REQUEST_METHOD} !^(GET|HEAD|OPTIONS)$
+  RewriteRule ^ - [R=405,L]
+  # Referrer spam
+  RewriteCond %{HTTP_REFERER} (semalt|buttons-for-website|darodar|best-seo-offer|free-share-buttons|get-free-traffic|ilovevitaly|priceg|hulfingtonpost) [NC]
+  RewriteRule ^ - [F,L]
 </IfModule>
 
 # ---- Security headers ----
@@ -17,16 +52,31 @@ ErrorDocument 404 /404.html
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "SAMEORIGIN"
-  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Strict-Transport-Security "max-age=31536000" "expr=%{HTTPS} == 'on'"
+  Header always unset X-Powered-By
+  Header unset X-Powered-By
 
   # Staging (gomes.escolats.com.br): keep the test environment out of search engines.
   <If "%{HTTP_HOST} =~ /escolats\.com\.br$/">
     Header always set X-Robots-Tag "noindex, nofollow"
   </If>
 
-  # Long cache for static assets, no cache for HTML
-  <FilesMatch "\.(css|js|jpg|jpeg|png|webp|svg|mp4|woff2)$">
+  # Discovery files: readable by any tool; humans/security stay out of search results
+  <FilesMatch "^(robots\.txt|llms\.txt|humans\.txt|security\.txt|site\.webmanifest)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+  <FilesMatch "^(humans\.txt|security\.txt)$">
+    Header set X-Robots-Tag "noindex"
+  </FilesMatch>
+
+  # Long cache for static assets (URLs are versioned), one day for text and manifest, no cache for HTML
+  <FilesMatch "\.(css|js|jpg|jpeg|png|webp|avif|gif|svg|ico|mp4|webm|woff2)$">
     Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.(txt|xml|webmanifest)$">
+    Header set Cache-Control "public, max-age=86400"
   </FilesMatch>
   <FilesMatch "\.html$">
     Header set Cache-Control "no-cache"
@@ -35,12 +85,17 @@ ErrorDocument 404 /404.html
 
 # ---- Compression ----
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript image/svg+xml application/json text/plain application/xml
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/javascript text/javascript application/json application/manifest+json image/svg+xml image/x-icon
 </IfModule>
 
 # ---- MIME types ----
 <IfModule mod_mime.c>
   AddType image/webp .webp
+  AddType image/avif .avif
   AddType video/mp4 .mp4
   AddType image/svg+xml .svg
+  AddType image/x-icon .ico
+  AddType application/manifest+json .webmanifest
+  AddType text/plain .txt
+  AddCharset utf-8 .html .css .js .txt .xml .json .webmanifest .svg
 </IfModule>

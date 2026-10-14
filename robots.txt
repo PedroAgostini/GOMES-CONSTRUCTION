@@ -1,4 +1,20 @@
+# gomessroofing.com
+# Ad landing pages under /lp/ carry their own noindex tag and stay crawlable,
+# so search engines can read it. The thank-you page is a conversion page only.
+
 User-agent: *
+Allow: /
+Disallow: /lp/roofing/thank-you/
+Disallow: /*.md$
+Disallow: /*.zip$
+
+# Google Ads checks landing page quality: let it read every page
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
 Allow: /
 
 Sitemap: https://gomessroofing.com/sitemap.xml
+
+# Plain-language summary for AI assistants: https://gomessroofing.com/llms.txt

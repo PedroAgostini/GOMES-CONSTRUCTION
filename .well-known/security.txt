@@ -1,0 +1,6 @@
+# Security contact for gomessroofing.com (RFC 9116)
+Contact: mailto:info@gomessroofing.com
+Contact: tel:+1-774-381-4481
+Expires: 2027-10-01T00:00:00.000Z
+Preferred-Languages: en, pt
+Canonical: https://gomessroofing.com/.well-known/security.txt

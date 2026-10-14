@@ -1,0 +1,23 @@
+/* TEAM */
+Client: Gomes's Construction Inc.
+Contact: info@gomessroofing.com
+From: Brockton, Massachusetts, USA
+
+Design and development: Eu Sou TS
+Site: https://eusouts.com/
+From: Brazil
+
+/* THANKS */
+José and the Gomes's Construction crew, for the photos, the drone footage and the roofs.
+Every customer who left a Google review.
+
+/* SITE */
+Last update: 2026/10/14
+Language: English
+Doctype: HTML5
+Standards: HTML5, CSS3, ES2020, WCAG 2.2, Schema.org
+Components: vanilla HTML, CSS and JavaScript, no frameworks
+Forms: Web3Forms
+Fonts: Jost, Atkinson Hyperlegible Next (Google Fonts)
+Materials featured: CertainTeed
+Software: Visual Studio Code, Claude Code

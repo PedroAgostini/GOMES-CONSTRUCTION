@@ -1,0 +1,52 @@
+{
+  "name": "Gomes's Construction Inc.",
+  "short_name": "Gomes's",
+  "description": "Roofing, siding and insurance claim restoration in Brockton and across Massachusetts.",
+  "lang": "en-US",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "categories": [
+    "business",
+    "lifestyle"
+  ],
+  "icons": [
+    {
+      "src": "/assets/logo/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "/assets/logo/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/logo/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/assets/logo/icon-maskable-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Free Estimate",
+      "short_name": "Estimate",
+      "url": "/#estimate",
+      "icons": [
+        {
+          "src": "/assets/logo/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}
