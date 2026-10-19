@@ -2,14 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://gomessroofing.com/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image><image:loc>https://gomessroofing.com/assets/img/og-cover.jpg</image:loc></image:image>
-    <image:image><image:loc>https://gomessroofing.com/assets/img/about-truck-finished-home.webp</image:loc></image:image>
+    <image:image><image:loc>https://gomessroofing.com/assets/img/about-gomes-truck.webp</image:loc></image:image>
     <image:image><image:loc>https://gomessroofing.com/assets/img/service-roof-replacement.webp</image:loc></image:image>
     <image:image><image:loc>https://gomessroofing.com/assets/img/service-siding.webp</image:loc></image:image>
     <image:image><image:loc>https://gomessroofing.com/assets/img/work-gray-roof-colonial.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://gomessroofing.com/insurance-claims/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image><image:loc>https://gomessroofing.com/assets/img/service-insurance-restoration.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://gomessroofing.com/privacy-policy/</loc>

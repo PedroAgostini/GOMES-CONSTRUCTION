@@ -48,6 +48,7 @@ Prices are only given after an in-person inspection, in a written estimate. Work
 ## Pages
 
 - [Home](https://gomessroofing.com/): services, recent work, reviews, the roofing system, service area and the estimate form
+- [Insurance Claims](https://gomessroofing.com/insurance-claims/): roof inspections, damage documentation and direct negotiation with the insurance company for storm damage claims
 - [Privacy Policy](https://gomessroofing.com/privacy-policy/): how estimate request information is collected and used
 - [Terms of Use](https://gomessroofing.com/terms-of-use/): website terms, estimates, contracts, warranties and insurance claims
 
