@@ -1233,3 +1233,72 @@ body::after {
   .ic-score { justify-items: center; text-align: center; }
 }
 @media (max-width: 560px) { .ic-trust__list { grid-template-columns: 1fr; } }
+
+/* ---------- contact card (/redirect) ---------- */
+.vc-page { background: var(--ink); color: #fff; }
+.vc {
+  position: relative; isolation: isolate; min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: max(40px, env(safe-area-inset-top)) 16px max(28px, env(safe-area-inset-bottom));
+}
+.vc__bg { position: fixed; inset: 0; z-index: -1; }
+.vc__bg img { width: 100%; height: 100%; object-fit: cover; }
+.vc__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23, 18, 15, .7) 0%, rgba(23, 18, 15, .86) 40%, rgba(23, 18, 15, .97) 100%); }
+.vc__card {
+  width: min(100%, 440px); padding: 36px clamp(18px, 5vw, 28px) 28px; text-align: center;
+  background: rgba(23, 18, 15, .62); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border: 1px solid rgba(246, 242, 238, .14); border-radius: 18px;
+  box-shadow: 0 30px 60px -36px rgba(0, 0, 0, .8);
+}
+.vc__brand img { width: min(210px, 70%); margin-inline: auto; }
+.vc__tag { max-width: 30ch; margin: 16px auto 0; color: #d6ccc5; font-size: 1rem; line-height: 1.5; }
+.vc__links { display: grid; gap: 10px; margin-top: 28px; text-align: left; }
+.vc-link {
+  display: flex; align-items: center; gap: 14px; min-height: 68px; padding: 12px 16px;
+  color: #fff; text-decoration: none; background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(246, 242, 238, .14); border-radius: 12px;
+  transition: background-color .25s var(--ease), border-color .25s, transform .25s var(--ease);
+}
+.vc-link:hover { background: rgba(255, 255, 255, .11); border-color: rgba(246, 242, 238, .3); transform: translateY(-1px); }
+.vc-link:active { transform: scale(.98); transition-duration: .08s; }
+.vc-link__ico { flex: none; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--red); color: #fff; }
+.vc-link__ico .ico { width: 20px; height: 20px; }
+.vc-link__txt { flex: 1; min-width: 0; display: grid; line-height: 1.25; }
+.vc-link__txt b { font-family: var(--f-display); font-weight: 700; font-size: 1.08rem; }
+.vc-link__txt small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #c9bfb8; font-size: .92rem; font-variant-numeric: tabular-nums lining-nums; }
+.vc-link__go { color: #a69a92; transition: transform .3s var(--ease), color .2s; }
+.vc-link:hover .vc-link__go { color: #fff; transform: translateX(3px); }
+.vc-link--primary { background: var(--red); border-color: var(--red); }
+.vc-link--primary:hover { background: var(--brick); border-color: var(--brick); }
+.vc-link--primary .vc-link__ico { background: rgba(255, 255, 255, .18); }
+.vc-link--primary .vc-link__txt small, .vc-link--primary .vc-link__go { color: #fff; }
+.vc__h { margin-top: 28px; font-family: var(--f-display); font-weight: 700; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: #a69a92; }
+.vc__social { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+.vc__social a {
+  display: grid; justify-items: center; gap: 8px; padding: 14px 10px; color: #fff; text-decoration: none;
+  font-family: var(--f-display); font-weight: 600; font-size: .9rem;
+  background: rgba(255, 255, 255, .06); border: 1px solid rgba(246, 242, 238, .14); border-radius: 12px;
+  transition: background-color .25s var(--ease), border-color .25s, transform .25s var(--ease);
+}
+.vc__social a:hover { background: var(--red); border-color: var(--red); transform: translateY(-1px); }
+.vc__social .ico { width: 24px; height: 24px; }
+.vc__foot { margin-top: 20px; color: #a69a92; font-size: .85rem; }
+/* narrow phones: drop the arrows so the email address fits */
+@media (max-width: 380px) {
+  .vc__card { padding-inline: 14px; }
+  .vc-link { padding-inline: 14px; }
+  .vc-link__go { display: none; }
+  .vc__social a { font-size: .8rem; }
+}
+
+/* entrance: the card settles, then the links follow */
+.vc__card, .vc__links li, .vc__social li { animation: vc-in .7s var(--ease) both; }
+.vc__links li:nth-child(1) { animation-delay: .12s; }
+.vc__links li:nth-child(2) { animation-delay: .18s; }
+.vc__links li:nth-child(3) { animation-delay: .24s; }
+.vc__social li { animation-delay: .32s; }
+@keyframes vc-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .vc__card, .vc__links li, .vc__social li { animation: none; }
+  .vc-link, .vc__social a { transition: none; }
+}
