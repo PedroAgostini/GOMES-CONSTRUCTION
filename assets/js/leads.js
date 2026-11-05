@@ -26,6 +26,9 @@
     const lead = { form_id: FORM_ID, ...data, page: data.page || location.href, submitted_at: new Date().toISOString() };
     PLUMBING.forEach((k) => delete lead[k]);
     const [email, hook] = await Promise.allSettled([post(form.action, data), post(WEBHOOK, lead)]);
+    // say which side refused the lead, so a failed test can be diagnosed from the console
+    if (email.status === "rejected") console.warn("[GomesLeads] Web3Forms refused the lead:", email.reason && email.reason.message);
+    if (hook.status === "rejected") console.warn("[GomesLeads] Lead webhook refused the lead:", hook.reason && hook.reason.message);
     if (email.status === "rejected" && hook.status === "rejected") throw email.reason;
     return { email: email.status === "fulfilled", webhook: hook.status === "fulfilled" };
   }

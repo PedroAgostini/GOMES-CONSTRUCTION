@@ -496,7 +496,22 @@
     if (list) list.textContent = ["Brockton", ...TOWNS.map((t) => t[0])].sort().join(" · ");
   }
 
-  /* estimate forms (hero + section): three steps, validated per step, sent to Web3Forms */
+  /* US phone mask on every estimate form: (774) 381-4481, a leading country code 1 is dropped */
+  const maskPhone = (v) => {
+    let d = v.replace(/\D/g, "");
+    if (d.length > 10 && d[0] === "1") d = d.slice(1);
+    d = d.slice(0, 10);
+    if (d.length < 4) return d.length ? `(${d}` : "";
+    if (d.length < 7) return `(${d.slice(0, 3)}) ${d.slice(3)}`;
+    return `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`;
+  };
+  $$('[data-form] input[type="tel"]').forEach((el) => el.addEventListener("input", (e) => {
+    // let backspace remove the mask characters instead of fighting the cursor
+    if (e.inputType === "deleteContentBackward" && /[)\s-]$/.test(el.value)) return;
+    el.value = maskPhone(el.value);
+  }));
+
+  /* estimate forms (hero + section): three steps, validated per step, sent through GomesLeads */
   $$("[data-form]").forEach((form) => {
     const steps = $$("[data-step]", form), dots = $$("[data-step-dot]", form);
     const next = $("[data-next]", form), back = $("[data-back]", form), submit = $("[data-submit]", form);

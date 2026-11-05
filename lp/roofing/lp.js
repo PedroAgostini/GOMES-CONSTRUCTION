@@ -99,7 +99,7 @@
     const spam = window.GomesAntispam ? GomesAntispam.verdict(form) : (form.botcheck.checked ? "bot" : "");
     fail.hidden = true;
     if (spam === "bot") return;
-    if (spam) { fail.hidden = false; return; }
+    if (spam) { console.warn("[GomesLeads] Blocked by antispam:", spam); fail.hidden = false; return; }
 
     submit.disabled = true;
     submit.classList.add("is-sending");
