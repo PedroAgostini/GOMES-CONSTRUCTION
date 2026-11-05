@@ -1,4 +1,4 @@
-/* Roofing LP: three-step estimate form (#form01), sent to Web3Forms, then redirected to thank-you/ */
+/* Roofing LP: three-step estimate form (#form01), sent through GomesLeads (Web3Forms + lead webhook), then redirected to thank-you/ */
 (() => {
   const form = document.getElementById("form01");
   if (!form) return;
@@ -110,16 +110,10 @@
     data.page = location.href;
 
     try {
-      const res = await fetch(form.action, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(data),
-      });
-      const json = await res.json().catch(() => ({}));
-      if (!res.ok || json.success === false) throw new Error(json.message || res.status);
+      await GomesLeads.send(form, data);
       if (window.GomesAntispam) GomesAntispam.sent();
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: "lead_submit", form_id: "form01", service: data.service });
+      window.dataLayer.push({ event: "lead_submit", form_id: GomesLeads.FORM_ID, service: data.service });
       location.href = thankYouUrl();
     } catch (err) {
       fail.hidden = false;

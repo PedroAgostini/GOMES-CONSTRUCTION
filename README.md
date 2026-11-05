@@ -119,7 +119,7 @@ Depois é só abrir `http://localhost:8080`.
 
 ## Antes de ir para produção
 
-- [ ] **Web3Forms:** trocar `YOUR_WEB3FORMS_ACCESS_KEY` em `index.html` pela chave real (gerada em [web3forms.com](https://web3forms.com) com o e-mail que vai receber os leads). Sem ela, o formulário mostra uma mensagem de erro com o telefone.
+- [x] **Web3Forms + webhook:** uma chave do Web3Forms por formulário (hero da home + Insurance Claims, formulário de estimate da home, LP), no campo `access_key` de cada um. Cada lead vai para o Web3Forms (e-mail) e para o webhook de leads, os dois definidos em `assets/js/leads.js` (form id `form01`).
 - [ ] **Conteúdo técnico:** validar com o José os textos das 6 camadas do sistema de telhado.
 - [ ] **Área de atendimento:** a lista de cidades veio do site atual e ainda não inclui a South Shore (Plymouth, Taunton, Quincy…).
 - [ ] **Licença:** informar o número da MA Home Improvement License, se o cliente quiser exibi-lo.

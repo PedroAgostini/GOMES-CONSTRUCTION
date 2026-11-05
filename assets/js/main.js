@@ -560,10 +560,11 @@
       try {
         const data = Object.fromEntries(new FormData(form));
         if (window.GomesAntispam) GomesAntispam.clean(data);
-        const res = await fetch(form.action, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) });
-        const out = await res.json().catch(() => ({}));
-        if (!res.ok || out.success === false) throw new Error(out.message || "Request failed");
+        data.page = location.href;
+        await GomesLeads.send(form, data);
         if (window.GomesAntispam) GomesAntispam.sent();
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "lead_submit", form_id: GomesLeads.FORM_ID, service: data.service });
         form.classList.add("is-sent");
         status.classList.add("is-ok");
         status.textContent = `Thank you, ${String(data.name).split(" ")[0]}. José will call you at ${data.phone}, usually the same day.`;
